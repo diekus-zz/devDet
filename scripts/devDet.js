@@ -1,26 +1,8 @@
-
-//AFrame device utils 
-var AFDevice = AFRAME.utils.device;
-
-//vr device enum setup
-function Enum(values){
-    for( var i = 0; i < values.length; ++i ){
-        this[values[i]] = i;
-    }
-    return this;
-}
-var device = {};
-device.type = new Enum(['GEARVR', 'MOBILE', 'DESKTOP', 'VIVE', 'RIFT', 'DESKTOP', 'UNKNOWN']);
-
-//detected device
-var detectedDevice;
-var displayDevice;
+let detectedDevice;
 
 //device detection
-function deviceDetection(){
+function deviceDetectionAF(){
     navigator.getVRDisplays().then(function (displays) {
-        console.log(displays[0]);
-
         if(AFDevice.isGearVR()){
             detectedDevice = device.type.GEARVR;
         }
@@ -44,3 +26,22 @@ function deviceDetection(){
         displayDevice = displays[0];
     });
 };
+
+let deviceDetection = function(){
+    if(navigator.getVRDisplays) {
+        console.log('WebVR 1.1 supported');
+        navigator.getVRDisplays().then(function(displays) {
+          if(displays.length > 0) {
+            detectedDevice = displays[0];
+          }
+          else{
+              console.log('no device detected');
+          }
+        });
+      }
+      else{
+          console.log('No WebVR support');
+      }
+};
+
+deviceDetection();
