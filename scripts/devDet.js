@@ -10,10 +10,10 @@ let deviceDetection = function(){
                 window.addEventListener("gamepadconnected", function(e) {
                     console.log(`controller ${e.gamepad.index} (${e.gamepad.id}) connected`);
                     if(e.gamepad.pose && e.gamepad.pose.hasOrientation && e.gamepad.pose.hasPosition){
-                        do_devDet_6DoF(e.gamepad.id);
+                        do_devDet_6DoF(e.gamepad.id, e.gamepad.hand);
                     }
                     else if(e.gamepad.pose && e.gamepad.pose.hasOrientation){
-                        do_devDet_3DoF(e.gamepad.id);
+                        do_devDet_3DoF(e.gamepad.id, e.gamepad.hand);
                     }
                     else {
                         do_devDet_0DoF();
