@@ -10,13 +10,13 @@ let vrDetection = function(){
             }
             else{ // if there are no vr devices present adds cursor
                 console.log('no device detected'); 
-                do_devDet_0DoF();
+                do_devDet_0DoF(-1);
             }
         });
       }
       else{
           console.log('No WebVR support'); // adds cursor
-          do_devDet_0DoF();
+          do_devDet_0DoF(-1);
       }
 };
 
