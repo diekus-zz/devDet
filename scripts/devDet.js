@@ -1,4 +1,4 @@
-let detectedDevice;
+let detectedDevice = null;
 
 let vrDetection = function(){
     if(navigator.getVRDisplays) {
