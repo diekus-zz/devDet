@@ -6,9 +6,10 @@ let vrDetection = function(){
         navigator.getVRDisplays().then(function(displays) {
             if(displays.length > 0) { // if there are VR devices present
                 detectedDevice = displays[0];
-                console.log(detectedDevice.displayName); 
+                console.log(detectedDevice.displayName);
+                controller_detection();
             }
-            else{ // if there are no vr devices present adds cursor
+            else{ // if there are no vr devices present adds cursor and checks for gamepad
                 console.log('no device detected'); 
                 do_devDet_0DoF(-1);
             }
@@ -22,7 +23,6 @@ let vrDetection = function(){
 
 document.addEventListener('DOMContentLoaded', function() {
     vrDetection();
-    controller_detection();
 });
 
 let controller_detection = function(){
